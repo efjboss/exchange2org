@@ -295,10 +295,7 @@ class Exchange2Org(object):
 
             # Write Org-mode header with optional tags and category:
             if not options.dryrun:
-                outputhandle.write('# -*- mode: org; coding: utf-8; -*-\n* Calendar events of "' +
-                                   self.config.USERNAME.replace('\\', '\\\\') + '" from "' + self.config.EXCHANGE_SERVER +
-                                   '"  ·•·  Generated via ' + sys.argv[0] + ' at ' +
-                                   datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S'))
+                outputhandle.write('* calendar ' + datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S'))
                 if len(self.config.TAGS) > 0:
                     outputhandle.write(' ' * 10 + ':' + ':'.join(self.config.TAGS) + ':')
                 if len(self.config.CATEGORY) > 0:
@@ -313,9 +310,6 @@ class Exchange2Org(object):
                     number_of_events += 1
                     if not options.dryrun:
                         outputhandle.write(output)
-
-            if not options.dryrun:
-                outputhandle.write('\n\n# Local Variables:\n# mode: auto-revert-mode\n# End:\n')
 
         self.logger.info(str(number_of_events) + ' events were written to ' + outputfilename)
 
