@@ -295,7 +295,7 @@ class Exchange2Org(object):
 
             # Write Org-mode header with optional tags and category:
             if not options.dryrun:
-                outputhandle.write('* calendar ' + datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S'))
+                outputhandle.write('* calendar ' + datetime.datetime.now().strftime('%Y-%m-%d'))
                 if len(self.config.TAGS) > 0:
                     outputhandle.write(' ' * 10 + ':' + ':'.join(self.config.TAGS) + ':')
                 if len(self.config.CATEGORY) > 0:
